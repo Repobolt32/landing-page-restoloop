@@ -1,0 +1,107 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Caveat:wght@400;700&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", serif;
+  --font-display: "Caveat", cursive;
+
+  --color-primary: #0000EE;
+  --color-accent: #DF7656;
+  --color-bg: #0A0A0A;
+  --color-card: #141414;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-white font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #DF7656 0%, #ffffff 50%, #DF7656 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+}
+
+.glass-card {
+  @apply bg-card/50 backdrop-blur-md border border-white/5;
+}
+
+.btn-accent {
+  @apply bg-accent text-white transition-all duration-300;
+  box-shadow: 0 0 24px rgba(223, 118, 86, 0.3);
+  border: 1px solid rgba(223, 118, 86, 0.2);
+}
+
+.btn-accent:hover {
+  box-shadow: 0 0 32px rgba(223, 118, 86, 0.5);
+  @apply scale-105;
+}
+
+.btn-whatsapp {
+  background: #25d97f;
+  box-shadow: 0 0 24px rgba(37,217,127,0.45);
+  border: 1px solid rgba(37,217,127,0.4);
+  @apply text-white transition-all duration-300;
+}
+
+.btn-whatsapp:hover {
+  box-shadow: 0 0 32px rgba(37,217,127,0.6);
+  @apply scale-105;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 24px;
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  min-width: 100%;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
